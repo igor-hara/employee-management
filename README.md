@@ -24,6 +24,8 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [React-hook-form](https://react-hook-form.com/)
+- [Yup](https://github.com/jquense/yup)
 - [Prettier](https://prettier.io/)
 - [Headless UI](https://headlessui.com/)
 - [Google Font](https://fonts.google.com/)
