@@ -20,17 +20,54 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Zadatak: 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Izrada stranice za prikaz i upravljanje zaposlenicima s funkcionalnostima unosa,
+prikaza, filtriranja i pretraživanja
+Opis zadatka:
+Vaš zadatak je izraditi stranicu koja omogućava prikaz popisa zaposlenika te unos novih podataka
+o zaposlenicima.
+Detalji zadatka:
+1. Prikaz podataka s API-ja (naslovnica):
+   o Stranica će dohvaćati popis zaposlenika s API-ja (get metoda):
+   https://api.test.ulaznice.hr/paganini/api/job-interview/employees
+   o Prikaz podataka je proizvoljan - može biti u formatu tablice, kartica ili drugom
+   obliku.
 
-## Deploy on Vercel
+2. Unos podataka (druga stranica):
+   o Kreirati formu za unos podataka o zaposlenicima (ime, prezime, datum rođenja,
+   pozicija).
+   o Validacija unosa: Osigurati da korisnik unese ispravne podatke (input polja ne
+   smiju ostati prazna).
+   o Forma se ne treba nigdje submitati; podaci iz forme trebaju se ispisati u konzoli
+   prilikom klika na gumb "Spremi".
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Filtriranje i pretraživanje:
+   o Implementirati funkcionalnost filtriranja zaposlenika po poziciji.
+   o Implementirati funkcionalnost pretraživanja zaposlenika po imenu ili prezimenu.
+4. Responzivnost:
+   o Osigurati da stranica pravilno prikazuje i funkcionira na različitim veličinama
+   zaslona.
+5. Navigacija:
+   o Dodati navigaciju koja će korisnicima omogućiti prelazak između različitih
+   dijelova stranice (prikaz zaposlenika i unos podataka o zaposleniku)
+   o Prva stranica (naslovnica) će prikazivati popis zaposlenika.
+   o Druga stranica će biti forma za unos novih zaposlenika.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Bonus bodovi:
+1. Sortiranje zaposlenika:
+   o Omogućiti korisniku sortiranje popisa zaposlenika prema određenom kriteriju,
+   kao što su ime, prezime ili pozicija.
+
+2. Paginacija:
+   o Implementirati paginaciju kako biste ograničili prikaz na manje stranica.
+
+Napomena:
+• Možete odabrati bilo koji frontend framework/library po vlastitom izboru (npr. Angular,
+React, Vue) ali preporučujemo Angular s obzirom da njega preferiramo u našem
+svakodnevnom radu.
+• Sam dizajn stranice nije previše bitan no ulazit će u bonus bodove kako bi mogli vidjeti i
+vaše znanje HTML-a i CSS-a.
+• Bonus bodovi nisu obavezni, ali će dodatno ocijeniti vaše vještine i trud u izradi zadatka.
