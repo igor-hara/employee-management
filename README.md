@@ -20,9 +20,14 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+### Techologies:
 
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Prettier](https://prettier.io/)
+- [Google Font](https://fonts.google.com/)
 
-### Zadatak: 
+### Zadatak:
 
 Izrada stranice za prikaz i upravljanje zaposlenicima s funkcionalnostima unosa,
 prikaza, filtriranja i pretraživanja
@@ -30,6 +35,7 @@ Opis zadatka:
 Vaš zadatak je izraditi stranicu koja omogućava prikaz popisa zaposlenika te unos novih podataka
 o zaposlenicima.
 Detalji zadatka:
+
 1. Prikaz podataka s API-ja (naslovnica):
    o Stranica će dohvaćati popis zaposlenika s API-ja (get metoda):
    https://api.test.ulaznice.hr/paganini/api/job-interview/employees
@@ -57,6 +63,7 @@ Detalji zadatka:
    o Druga stranica će biti forma za unos novih zaposlenika.
 
 Bonus bodovi:
+
 1. Sortiranje zaposlenika:
    o Omogućiti korisniku sortiranje popisa zaposlenika prema određenom kriteriju,
    kao što su ime, prezime ili pozicija.
