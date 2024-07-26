@@ -5,25 +5,51 @@ import Link from 'next/link';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 
 const EmployeesTable = ({ initialEmployees }) => {
+  // Search state
   const [search, setSearch] = useState('');
-  const [filteredEmployees, setFilteredEmployees] = useState(initialEmployees);
+  const [filteredEmployees, setFilteredEmployees] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 7;
 
+  // Filter employees and reset page on search change
   useEffect(() => {
-    // for '' search return every employee from initialEmployees
-    setFilteredEmployees(
-      initialEmployees.filter((employee) =>
-        search.toLowerCase() === ''
-          ? true
-          : employee.firstName.toLowerCase().includes(search.toLowerCase()) ||
-            employee.lastName.toLowerCase().includes(search.toLowerCase()) ||
-            employee.jobTitle.toLowerCase().includes(search.toLowerCase()),
-      ),
+    const filtered = initialEmployees.filter((employee) =>
+      search.toLowerCase() === ''
+        ? true
+        : employee.firstName.toLowerCase().includes(search.toLowerCase()) ||
+          employee.lastName.toLowerCase().includes(search.toLowerCase()) ||
+          employee.jobTitle.toLowerCase().includes(search.toLowerCase()),
     );
+
+    setFilteredEmployees(filtered);
+    // Reset to first page when filtering
+    setCurrentPage(1);
   }, [search, initialEmployees]);
+
+  // Calculate pagination
+  const indexOfLastEmployee = currentPage * itemsPerPage;
+  const indexOfFirstEmployee = indexOfLastEmployee - itemsPerPage;
+  const currentEmployees = filteredEmployees.slice(
+    indexOfFirstEmployee,
+    indexOfLastEmployee,
+  );
+
+  // Pagination handlers
+  const handleNextPage = () => {
+    if (currentPage * itemsPerPage < filteredEmployees.length) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
 
   return (
     <main className='flex min-h-screen flex-col items-center p-24'>
-      <h1 className='text-3xl font-bold'>Employee management</h1>
+      <h1 className='text-3xl font-bold'>Employee Management</h1>
       <div className='px-4 sm:px-6 lg:px-8 mt-16'>
         <div className='sm:flex sm:items-center'>
           <div className='sm:flex-auto'>
@@ -32,7 +58,7 @@ const EmployeesTable = ({ initialEmployees }) => {
             </h1>
             <p className='mt-2 text-sm text-gray-700'>
               A list of all the users in your account including their name,
-              title, email and role.
+              title, email, and role.
             </p>
           </div>
           <div className='mt-4 sm:ml-16 sm:mt-0 sm:flex-none'>
@@ -105,8 +131,8 @@ const EmployeesTable = ({ initialEmployees }) => {
                   </tr>
                 </thead>
                 <tbody className='divide-y divide-gray-200 bg-white'>
-                  {filteredEmployees.length > 0 ? (
-                    filteredEmployees.map((employee) => (
+                  {currentEmployees.length > 0 ? (
+                    currentEmployees.map((employee) => (
                       <tr key={employee.id}>
                         <td className='whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8'>
                           {employee.firstName}
@@ -136,6 +162,27 @@ const EmployeesTable = ({ initialEmployees }) => {
               </table>
             </div>
           </div>
+        </div>
+
+        {/* Pagination Controls */}
+        <div className='mt-4 flex justify-between'>
+          <button
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
+            className={`py-2 px-4 rounded-md ${currentPage === 1 ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-indigo-500 text-white hover:bg-indigo-600'}`}
+          >
+            Previous
+          </button>
+          <span className='text-sm font-semibold text-gray-900'>
+            Page {currentPage}
+          </span>
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage * itemsPerPage >= filteredEmployees.length}
+            className={`py-2 px-4 rounded-md ${currentPage * itemsPerPage >= filteredEmployees.length ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-indigo-500 text-white hover:bg-indigo-600'}`}
+          >
+            Next
+          </button>
         </div>
       </div>
     </main>
