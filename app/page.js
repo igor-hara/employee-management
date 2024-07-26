@@ -7,7 +7,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <Navbar />
+      {/*<Navbar />*/}
       <main className='flex min-h-screen flex-col items-center justify-between p-24'>
         <h1 className='text-3xl font-bold'>Employee management</h1>
         {employees.data.length > 0 && (

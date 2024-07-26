@@ -2,21 +2,14 @@ import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-  Menu,
-  MenuItem,
-  MenuItems,
 } from '@headlessui/react';
 
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
   { name: 'Add new employee', href: '/add-employee', current: false },
-];
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
 ];
 
 function classNames(...classes) {
@@ -30,11 +23,13 @@ const Navbar = () => {
         <div className='relative flex h-16 justify-between'>
           <div className='relative z-10 flex px-2 lg:px-0'>
             <div className='flex flex-shrink-0 items-center'>
-              <img
-                alt='Your Company'
-                src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600'
-                className='h-8 w-auto'
-              />
+              <Link href='/'>
+                <img
+                  alt='Your Company'
+                  src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600'
+                  className='h-8 w-auto'
+                />
+              </Link>
             </div>
           </div>
 
@@ -52,26 +47,6 @@ const Navbar = () => {
                 className='hidden h-6 w-6 group-data-[open]:block'
               />
             </DisclosureButton>
-          </div>
-          <div className='hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center'>
-            {/* Profile dropdown */}
-            <Menu as='div' className='relative ml-4 flex-shrink-0'>
-              <MenuItems
-                transition
-                className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in'
-              >
-                {userNavigation.map((item) => (
-                  <MenuItem key={item.name}>
-                    <a
-                      href={item.href}
-                      className='block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100'
-                    >
-                      {item.name}
-                    </a>
-                  </MenuItem>
-                ))}
-              </MenuItems>
-            </Menu>
           </div>
         </div>
         <nav
