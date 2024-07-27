@@ -7,13 +7,21 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 const EmployeesTable = ({ initialEmployees }) => {
   // Search state
   const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(true);
   const [filteredEmployees, setFilteredEmployees] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 7;
 
+  // watch for API fetching employees
+  useEffect(() => {
+    if (initialEmployees) {
+      setLoading(false);
+    }
+  }, [initialEmployees]);
+
   // Filter employees and reset page on search change
   useEffect(() => {
-    const filtered = initialEmployees.filter((employee) =>
+    const filtered = initialEmployees?.data?.filter((employee) =>
       search.toLowerCase() === ''
         ? true
         : employee.firstName.toLowerCase().includes(search.toLowerCase()) ||
@@ -46,6 +54,14 @@ const EmployeesTable = ({ initialEmployees }) => {
       setCurrentPage((prevPage) => prevPage - 1);
     }
   };
+
+  if (loading) {
+    return (
+      <div className='flex items-center justify-center min-h-screen'>
+        Loading..
+      </div>
+    );
+  }
 
   return (
     <main className='flex min-h-screen flex-col items-center p-24'>
