@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import { Spinner } from '@/app/components/Spinner';
 
 const EmployeesTable = ({ initialEmployees }) => {
   // Search state
@@ -56,11 +57,7 @@ const EmployeesTable = ({ initialEmployees }) => {
   };
 
   if (loading) {
-    return (
-      <div className='flex items-center justify-center min-h-screen'>
-        Loading..
-      </div>
-    );
+    return <Spinner />;
   }
 
   return (
