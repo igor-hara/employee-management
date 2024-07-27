@@ -178,7 +178,7 @@ const EmployeesTable = ({ initialEmployees }) => {
         </div>
 
         {/* Pagination Controls */}
-        <div className='mt-4 flex justify-between'>
+        <div className='mt-8 flex justify-between '>
           <button
             onClick={handlePrevPage}
             disabled={currentPage === 1}
