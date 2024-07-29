@@ -2,7 +2,7 @@
 
 ## Deployed with Vercel
 
-[Posjetite deployanu verziju ovdje](https://employee-management-pi-sepia.vercel.app/)
+[Visit the deployed App](https://employee-management-pi-sepia.vercel.app/)
 
 ![Screenshot](./assets/screenshot.png)
 
